@@ -169,8 +169,8 @@
             }
           }
         },
-        "summary": "Post message",
-        "operationId": "function"
+        "summary": "Post message to serverless action",
+        "operationId": "functions"
       }
     }
   }
