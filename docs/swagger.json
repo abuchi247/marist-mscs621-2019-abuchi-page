@@ -155,7 +155,7 @@
         "operationId": "purchase_data"
       }
     },
-    "/function/": {
+    "/functions/": {
       "post": {
         "responses": {
           "200": {
