@@ -13,6 +13,9 @@ Currently our database only has about 5000 books. There are plans to add additio
 5. uWSGI
 6. Swagger
 
+## Our production application infrastructure
+![BookReviewArchitectureDiagramProd](BookReviewArchitectureDiagramProd.jpg)
+
 ## Using our Application
 ### Unauthorized User HomePage
 ![homePage](homePage.jpg)
