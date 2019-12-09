@@ -264,7 +264,7 @@
         "tags": [
           "book"
         ],
-        "summary": "Find book by ID",
+        "summary": "Find book by ISBN",
         "description": "Returns a single book",
         "consumes": [
           "application/x-www-form-urlencoded"
@@ -307,7 +307,7 @@
         "tags": [
           "review"
         ],
-        "summary": "Find review of specific book",
+        "summary": "Find all reviews on a book",
         "description": "Returns a list of reviews on a single book",
         "consumes": [
           "application/x-www-form-urlencoded"
@@ -383,7 +383,7 @@
         "tags": [
           "review"
         ],
-        "summary": "Find user review of specific book",
+        "summary": "Find user review on a specific book",
         "description": "Returns logged in user review on a specific book",
         "consumes": [
           "application/x-www-form-urlencoded"
