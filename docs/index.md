@@ -15,8 +15,8 @@ Currently our database only has about 5000 books. There are plans to add additio
 
 ## Our production application infrastructure
 ![BookReviewArchitectureDiagramProd](BookReviewArchitectureDiagramProd.jpg)
-
-## Using our Application
+<br/>
+## Using our web applicaion
 ### Unauthorized User HomePage
 ![homePage](homePage.jpg)
 
