@@ -8,10 +8,14 @@ Currently our database only has about 5000 books. There are plans to add additio
 ## Technologies Used:
 1. Docker
 2. Docker-compose
-3. Nginx
-4. Postgres
-5. uWSGI
-6. Swagger
+3. Python
+4. Flask
+5. Swagger
+6. JSON
+7. Nginx
+8. Postgres
+9. uWSGI
+10. Swagger
 
 ## Our production application infrastructure
 ![BookReviewArchitectureDiagramProd](BookReviewArchitectureDiagramProd.jpg)
