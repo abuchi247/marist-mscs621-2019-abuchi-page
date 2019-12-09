@@ -46,3 +46,5 @@ Currently our database only has about 5000 books. There are plans to add additio
 
 ### View Your Reviews
 ![userReviews](userReviews.jpg)
+
+#### **For more information on how to setup our application on your local machine, [click here](https://github.com/abuchi247/marist-mscs621-2019-abuchi)**
