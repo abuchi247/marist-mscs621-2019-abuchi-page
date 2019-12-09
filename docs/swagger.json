@@ -1,177 +1,608 @@
 {
-  "openapi": "3.0.2",
+  "swagger": "2.0",
   "info": {
-    "title": "Sample Application",
-    "version": "0.1.0"
+    "description": "Simplistic API to handle book review system",
+    "version": "1.0.0",
+    "title": "Book Review Service"
   },
+  "host": "35.222.118.21:81",
+  "basePath": "/api",
+  "tags": [
+    {
+      "name": "user",
+      "description": "Operations about user"
+    },
+    {
+      "name": "book",
+      "description": "Everything about books"
+    },
+    {
+      "name": "review",
+      "description": "Everything about book reviews"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
   "paths": {
-    "/": {
+    "/users": {
       "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Get all the users",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
         "responses": {
           "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {}
-              }
-            }
+            "description": "successful operation"
           }
-        },
-        "summary": "Read Root page",
-        "operationId": "index"
+        }
       }
     },
-    "/data/{data_id}": {
-      "get": {
-        "parameters": [
-          {
-            "in": "path",
-            "name": "data_id",
-            "schema": {
-              "type": "integer"
-            },
-            "required": true,
-            "description": "Numeric ID of the data to get"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {}
-              }
-            }
-          }
-        },
-        "summary": "Retrieve data with data_id",
-        "operationId": "get_data"
-      },
-      "put": {
-        "parameters": [
-          {
-            "in": "path",
-            "name": "data_id",
-            "schema": {
-              "type": "integer"
-            },
-            "required": true,
-            "description": "Numeric ID of the data to put"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {}
-              }
-            }
-          }
-        },
-        "summary": "Put data with data_id",
-        "operationId": "update_data"
-      },
-      "delete": {
-        "parameters": [
-          {
-            "in": "path",
-            "name": "data_id",
-            "schema": {
-              "type": "integer"
-            },
-            "required": true,
-            "description": "Numeric ID of the data to delete"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {}
-              }
-            }
-          }
-        },
-        "summary": "Delete data with data_id",
-        "operationId": "delete_data"
-      }
-    },
-    "/data/": {
-      "get": {
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {}
-              }
-            }
-          }
-        },
-        "summary": "Retrieve data",
-        "operationId": "list_data"
-      },
+    "/user/login": {
       "post": {
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {}
-              }
-            }
-          }
-        },
-        "summary": "Post all data",
-        "operationId": "create_data"
-      }
-    },
-    "/data/{data_id}/purchase": {
-      "put": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Logs user into the system",
+        "description": "",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
-            "in": "path",
-            "name": "data_id",
-            "schema": {
-              "type": "integer"
-            },
+            "name": "username",
+            "in": "formData",
+            "description": "The user name for login",
             "required": true,
-            "description": "Numeric ID of the data to purchase"
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "description": "The password for login in clear text",
+            "required": true,
+            "type": "string"
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {}
-              }
-            }
+            "description": "Logged in"
+          },
+          "401": {
+            "description": "Not logged in"
           }
-        },
-        "summary": "Purchase data",
-        "operationId": "purchase_data"
+        }
       }
     },
-    "/functions/": {
+    "/user/logout": {
       "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Logs out current logged in user session",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
         "responses": {
           "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                }
-              }
+            "description": "You are no longer logged in"
+          },
+          "405": {
+            "description": "You are not logged in"
+          }
+        }
+      }
+    },
+    "/user/{username}/exists": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Checks if the username exists",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "description": "Users username",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Found"
+          },
+          "404": {
+            "description": "Cannot find username"
+          }
+        }
+      }
+    },
+    "/user": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Returns the user",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/User"
             }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/user/create": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Logs a user into the service",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "formData",
+            "description": "Users username",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "description": "Users password",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "User added",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "404": {
+            "description": "Invalid username or password"
+          }
+        }
+      }
+    },
+    "/books": {
+      "get": {
+        "tags": [
+          "book"
+        ],
+        "summary": "Get all books",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Get all books"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/book": {
+      "post": {
+        "tags": [
+          "book"
+        ],
+        "summary": "Lookup book by category",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "search_option",
+            "in": "formData",
+            "description": "search categories supported:\n  * isbn\n  * title\n  * author\n",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "isbn",
+              "title",
+              "author"
+            ]
+          },
+          {
+            "name": "search_query",
+            "in": "formData",
+            "description": "String to look for in that category",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get all books with that search query"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Invalid search option"
+          }
+        }
+      }
+    },
+    "/book/{isbn}": {
+      "get": {
+        "tags": [
+          "book"
+        ],
+        "summary": "Find book by ID",
+        "description": "Returns a single book",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "isbn",
+            "in": "path",
+            "description": "ISBN of book to return. Must be 11 characters",
+            "required": true,
+            "type": "string",
+            "minLength": 10,
+            "maxLength": 10
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Book"
+            }
+          },
+          "400": {
+            "description": "Invalid ISBN supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Book not found"
+          }
+        }
+      }
+    },
+    "/reviews/book/{isbn}": {
+      "get": {
+        "tags": [
+          "review"
+        ],
+        "summary": "Find review of specific book",
+        "description": "Returns a list of reviews on a single book",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "isbn",
+            "in": "path",
+            "description": "ISBN of book to retrieve review. Must be 11 characters",
+            "required": true,
+            "type": "string",
+            "minLength": 10,
+            "maxLength": 10
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Review"
+            }
+          },
+          "400": {
+            "description": "Invalid ISBN supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Book ISBN not found"
           }
         },
-        "summary": "Post message to serverless action",
-        "operationId": "functions"
+        "security": [
+          {
+            "basic_auth": []
+          }
+        ]
+      }
+    },
+    "/reviews/user": {
+      "get": {
+        "tags": [
+          "review"
+        ],
+        "summary": "Find all reviews submitted by a logged in user",
+        "description": "Returns a list of reviews by a user",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Review"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "basic_auth": []
+          }
+        ]
+      }
+    },
+    "/review/user/book/{isbn}": {
+      "get": {
+        "tags": [
+          "review"
+        ],
+        "summary": "Find user review of specific book",
+        "description": "Returns logged in user review on a specific book",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "isbn",
+            "in": "path",
+            "description": "ISBN of book to retrieve review. Must be 11 characters",
+            "required": true,
+            "type": "string",
+            "minLength": 10,
+            "maxLength": 10
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Review"
+            }
+          },
+          "400": {
+            "description": "Invalid ISBN supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Book ISBN not found"
+          }
+        },
+        "security": [
+          {
+            "basic_auth": []
+          }
+        ]
+      }
+    },
+    "/review/add": {
+      "post": {
+        "tags": [
+          "review"
+        ],
+        "summary": "Adds a review on a specific book",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "isbn",
+            "in": "formData",
+            "description": "Book ISBN number. Must be 11 characters",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "rating",
+            "in": "formData",
+            "description": "Review rating:\n  * 1. (Definitely Not)\n  * 2. (Probably Not)\n  * 3. (Possibly)\n  * 4. (Probably)\n  * 5. (Definitely)\n",
+            "required": true,
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 5
+          },
+          {
+            "name": "comment",
+            "in": "formData",
+            "description": "Comment on the review",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Found old review submitted by user",
+            "schema": {
+              "$ref": "#/definitions/Review"
+            }
+          },
+          "201": {
+            "description": "Review created",
+            "schema": {
+              "$ref": "#/definitions/Review"
+            }
+          },
+          "400": {
+            "description": "Invalid isbn or rating"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Book ISBN not found"
+          }
+        },
+        "security": [
+          {
+            "basic_auth": []
+          }
+        ]
       }
     }
+  },
+  "securityDefinitions": {
+    "basic_auth": {
+      "type": "basic"
+    }
+  },
+  "definitions": {
+    "User": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "username": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "User"
+      }
+    },
+    "Book": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "isbn": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 10
+        },
+        "title": {
+          "type": "string"
+        },
+        "author": {
+          "type": "string"
+        },
+        "year": {
+          "type": "string",
+          "pattern": "^\\d{4}$",
+          "x-regex": "^\\\\d{4}$",
+          "x-modifiers": []
+        }
+      },
+      "xml": {
+        "name": "Book"
+      },
+      "example": {
+        "year": "year",
+        "author": "author",
+        "isbn": "isbn",
+        "id": 0,
+        "title": "title"
+      }
+    },
+    "Review": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "userId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "bookIsbn": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 10
+        },
+        "rating": {
+          "type": "integer",
+          "format": "int32",
+          "minimum": 1,
+          "maximum": 5,
+          "exclusiveMinimum": true,
+          "exclusiveMaximum": true
+        },
+        "comment": {
+          "type": "string"
+        },
+        "reviewDate": {
+          "type": "string",
+          "format": "date"
+        }
+      },
+      "xml": {
+        "name": "Review"
+      },
+      "example": {
+        "reviewDate": "2000-01-23",
+        "bookIsbn": "bookIsbn",
+        "rating": 1,
+        "comment": "comment",
+        "id": 0,
+        "userId": 6
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
   }
 }
