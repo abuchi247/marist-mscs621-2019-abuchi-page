@@ -431,7 +431,7 @@
         "tags": [
           "review"
         ],
-        "summary": "Adds a review on a specific book",
+        "summary": "Adds a review to a book",
         "consumes": [
           "application/x-www-form-urlencoded"
         ],
