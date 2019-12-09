@@ -13,5 +13,33 @@ Currently our database only has about 5000 books. There are plans to add additio
 5. uWSGI
 6. Swagger
 
-### Using our Application
+## Using our Application
+### Unauthorized User HomePage
 ![homePage](homePage.jpg)
+
+### Registration Page
+![RegisterationPage](registrationPage.jpg)
+
+### Login Page
+![LoginPage](loginPage.jpg)
+
+### Authorized User HomePage
+![authorizedHomePage](authorizedHomePage.jpg)
+
+### Authorized User HomePage
+![authorizedHomePage](authorizedHomePage.jpg)
+
+### LookUp Book
+![lookup](lookup.jpg)
+
+### Found Book
+![foundBook](foundBook.jpg)
+
+### Add review on a book
+![addReview](addReview.jpg)
+
+### View Reviews on Book
+![bookReviews](bookReviews.jpg)
+
+### View Your Reviews
+![userReviews](userReviews.jpg)
