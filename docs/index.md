@@ -16,6 +16,8 @@ Currently our database only has about 5000 books. There are plans to add additio
 8. Postgres
 9. uWSGI
 10. Swagger
+11. DockerHub
+12. GitHub
 
 ## Our production application infrastructure
 ![BookReviewArchitectureDiagramProd](BookReviewArchitectureDiagramProd.jpg)
