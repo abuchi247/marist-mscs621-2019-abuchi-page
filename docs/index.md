@@ -16,6 +16,13 @@ Currently our database only has about 5000 books. There are plans to add additio
 8. Postgres
 9. uWSGI
 10. Swagger
+11. AWS EC2 VM: for hosting Frontend Application
+12. Google Cloud Compute Engine VM for Hosting Rest services for application
+13. DockerHub: For hosting all containers used by this application 
+    1. [Book review webservice](https://hub.docker.com/repository/docker/abuchi247/book_review_web_service)
+    2. [Web Server and reverse proxy for webservice](https://hub.docker.com/repository/docker/abuchi247/book_review_web_service_nginx)
+    3. [Book review frontend Application](https://hub.docker.com/repository/docker/abuchi247/book_review_frontend)
+    4. [Web Server and reverse proxy for frontend application](https://hub.docker.com/repository/docker/abuchi247/book_review_frontend)
 
 ## Our production application infrastructure
 ![BookReviewArchitectureDiagramProd](BookReviewArchitectureDiagramProd.jpg)
@@ -51,4 +58,4 @@ Currently our database only has about 5000 books. There are plans to add additio
 ### View Your Reviews
 ![userReviews](userReviews.jpg)
 
-#### **For more information on how to setup our application on your local machine, [click here](https://github.com/abuchi247/marist-mscs621-2019-abuchi)**
+#### **For more information on how to setup our application on your local or any deloyment machine, [click here](https://github.com/abuchi247/marist-mscs621-2019-abuchi)**
