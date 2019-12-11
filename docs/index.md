@@ -6,16 +6,23 @@ Currently our database only has about 5000 books. There are plans to add additio
 ## Want to try our app? [click here](http://ec2-18-218-59-12.us-east-2.compute.amazonaws.com/)
 
 ## Technologies Used:
-1. Docker
-2. Docker-compose
-3. Python
-4. Flask
-5. Swagger
-6. JSON
-7. Nginx
-8. Postgres
-9. uWSGI
-10. Swagger
+* Docker
+* Docker-compose
+* Python: Programming language of choice
+* Flask: Web framework
+* Swagger: API documentation
+* JSON: Response format from our backend REST API services
+* Nginx: Web server and reverse proxy for our rest services and frontend container application
+* Postgres: Relational database of choice
+* uWSGI: Application server for our rest services and frontend application
+* DockerHub: For hosting our containerize application images
+    * [Book review frontend application](https://hub.docker.com/repository/docker/abuchi247/book_review_frontend)
+    * [Book review frontend web server and reverse proxy](https://hub.docker.com/repository/docker/abuchi247/book_review_frontend_nginx)
+    * [Book review REST web service](https://hub.docker.com/repository/docker/abuchi247/book_review_web_service)
+    * [Book review web service and reverse proxy for REST web service](https://hub.docker.com/repository/docker/abuchi247/book_review_web_service_nginx)
+* AWS EC2 VM: For hosting our frontend application
+* Google Cloud Compute Engine VM: For hosting our rest web service
+* Heroku Postgres DB Instance
 
 ## Our production application infrastructure
 ![BookReviewArchitectureDiagramProd](BookReviewArchitectureDiagramProd.jpg)
